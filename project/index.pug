@@ -1,0 +1,211 @@
+doctype
+html
+    head
+        meta(charest='utf-8')
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title AhmedSelem
+        //Start File styles
+        include include/style
+        //[if lt IE 9]
+            <script src="js/html5shiv.min.js></script>
+            <script src="js/respond.min.js"></script>   
+        //![endif]
+    body
+                        
+        //- Start Navbar
+        section(class='nav d-block d-md-none')
+            nav
+                ul.nav-list
+                    li.menuButton
+                        #menuIcon
+                            .bar
+                            .bar
+                            .bar
+                    li(class='text-capitalize' data-links='home')
+                        p.home home
+                        i(class='fa fa-user-tie')
+                    li(class='text-capitalize' data-links='about')
+                        p.about about
+                        i(class='fa fa-receipt')
+                    li(class='text-capitalize' data-links='portifoil')
+                        p.portifoil portifoil
+                        i(class='fa fa-briefcase')
+                    li(class='text-capitalize' data-links='contact')
+                        p.contact Contact
+                        i(class='fa fa-envelope-open')
+
+        //- End Navbar
+			
+        
+        //- Start Aside mixin
+        mixin shapeslinks(textSpan, ClassIcon, href, dataLinks)
+            li
+                |
+                |
+                span.text-capitalize= textSpan
+                |
+                |
+                a(href=href data-links=dataLinks target='_blank') #[i(class=ClassIcon)]
+                    p #[i(class=ClassIcon)]
+                    
+        //Start ASide
+        aside(class='d-none d-md-block')
+            ul(class='list-unstyled')
+                +shapeslinks('welcome to personal information', 'fa fa-user-tie', '#', 'home')
+                +shapeslinks('now more about me', 'fa fa-receipt', '#', 'about')
+                +shapeslinks('now it\'s my some projects', 'fa fa-briefcase', '#', 'portifoil')
+                +shapeslinks('contact me and download cv', 'fa fa-mobile-alt', '#', 'contact')
+
+        //End ASide
+        
+        //-Start Header Mixin
+        mixin shapessocial(textSpan, ClassIcon, href)
+            li
+                |
+                |
+                span.text-capitalize= textSpan
+                |
+                |
+                a(href=href target='_blank') #[i(class=ClassIcon)]
+                    p #[i(class=ClassIcon)]
+                    
+        //Start Section Header
+        header(id='home')
+
+            //Start Convas
+            canvas
+            //end Convas
+
+            div.container
+                div.header-box
+                    div(class='image')
+                        img(src='images/header/011.jpg' height='244' width='244')
+                    div(class='info')
+                        h1(class='text-uppercase') ahmed abdelrahman selem
+                        p.text-capitalize welcome to in my website
+                        ul(class='list-unstyled')
+                            +shapessocial ('facebook', 'fab fa-facebook-f', 'http://facebook.com/selem110')
+                            +shapessocial ('twitter', 'fab fa-twitter', 'https://twitter.com/Selem13665165')
+                            +shapessocial ('linkedIn', 'fab fa-linkedin-in', 'https://www.linkedin.com/in/ahmed-selem-a8a49116a')
+                            +shapessocial ('instagram', 'fab fa-instagram', 'https://www.instagram.com/ahmed_abdelrahman1000')
+
+
+        //End Section Header
+        
+        mixin bar(skillName, Width, text)
+            div(class='col-12 col-md-6')
+                div(class='skill-items')
+                    p(class='text-capitalize')=skillName
+                    div(class='skill-bar wow slideInLeft' style=Width data-wow-duration='4s' data-wow-offset='100')
+                        span=text
+        
+        // Start Section About   
+        section(class='about' id='about')
+            div.container
+                div(class='box-h')
+                    h2(class='text-uppercase') about..
+                div(class='box-info')
+                    p I am Ahmed Selem I study at the University of Menofia, my passion is frontEnd development opportunity junior position or training. i have about 1 years of experience in this field. 
+                div(class='btn-box')
+                    button(data-links='contact')  #[a(href='#') hire me]
+                div(class='box-skill')
+                    h3(class='text-capitalize') skills #[i(class='fa fa-code')]
+                    div(class='our-skills')
+                        div.row
+                            +bar('html', 'width: 90%', '90%')
+                            +bar('html5', 'width: 90%', '90%')
+                            +bar('css/css3', 'width: 90%', '90%')
+                            +bar('sass', 'width: 85%', '85%')
+                            +bar('bootstrap3&4', 'width: 90%', '90%')
+                            +bar('javascript', 'width: 70%', '70%')
+                            +bar('pugJs', 'width: 80%', '80%')
+                            +bar('gulpJs', 'width: 80%', '80%')
+                            +bar('jquery', 'width: 80%', '80%')
+        
+        // End Section About
+        mixin popProject(src, title, href, nameOfProject)
+            div(class='col-12 col-md-6 col-lg-4')
+                div(class='work-items')
+                    div(class='box-img')
+                        img(src=src)
+                    div(class='details-project')
+                        div(class='pos-box')
+                            div(class='btn-box')
+                                button #[a(href=href class='text-capitalize') show project #[i(class='fa fa-desktop')] ]
+                                button #[a(href=href class='text-capitalize')  show code #[i(class='fab fa-github')] ]
+                            h4=nameOfProject
+                    
+        
+        // Start Latest Work  
+        section(class='latest-work' id='portifoil')
+            div.container
+                div(class='box-h')
+                        h2(class='text-uppercase') latest work..
+                div(class='box-info text-center')
+                    span.text-capitalize portfolio
+                    p(class='text-capitalize') chek out my works
+                div.row
+                    +popProject('images/projects/img01.png', '', 'https://kirshnacompany.netlify.com', 'krishna kumar')
+                    +popProject('images/projects/img02.png', '', 'https://creativeportfolie.netlify.com', 'creative project') 
+                    +popProject('images/projects/img03.png', '', 'https://programmingcompany.netlify.com', 'roqay company')     
+        
+        // End Latest Work
+        
+        // Start Contact Me   
+        section(class='contact-me' id='contact')
+            div.container
+                div(class='box-h')
+                    h2(class='text-uppercase') contact me..
+                div(class='box-info')
+                        p(class='text-capitalize') if you find me qualified to get a jop in your company or freelancer please don't hesitate to connect me
+                div.row
+                    div(class='col-12 col-md-6')
+                        div(class='col-12 col-lg-6')
+                            div(class='contact-info text-capitalize')
+                                i(class='fa fa-map-marker-alt')
+                                h4 address #[span shebin el-kom el mounfia]
+                        div(class='col-12 col-lg-6')
+                            div(class='contact-info text-capitalize')
+                                i(class='fa fa-mobile-alt')
+                                h4 phone #[span 01008469068]
+                        div(class='col-12 col-lg-6')
+                            div(class='contact-info text-capitalize')
+                                i(class='fa fa-envelope')
+                                h4 e-Mail #[span(class='text-lowercase') aselem303@gmail.com]
+                    div(class='col-12 col-md-6')
+                        div(class='images d-none d-md-block')
+                            img(src='images/contact/contact011.png' height='289' width='470')
+                    div.col-12
+                        div.row
+                            div(class='col-12 col-md-6')
+                                div(class='btn-box')
+                                    button  #[a(href='https://drive.wps.com/d/ACLfDWGxirYe4Krn442dFA') download cv]
+                            div(class='col-12 col-md-6')
+                                ul(class='list-unstyled d-flex justify-content-center')
+                                    li #[a(href='http://facebook.com/selem110') #[i(class='fab fa-facebook')]]
+                                    li #[a(href='https://twitter.com/Selem13665165') #[i(class='fab fa-twitter')]]
+                                    li #[a(href='https://www.linkedin.com/in/ahmed-selem-a8a49116a') #[i(class='fab fa-linkedin-in')]]
+                                    li #[a(href='https://www.instagram.com/ahmed_abdelrahman1000') #[i(class='fab fa-instagram')]]
+
+        
+        // End Contact Me
+        
+        // STart Fixed Button
+        
+        div(class='fixed-button d-md-none')
+            span #[i(class='fa fa-arrow-up')]
+        
+        // End Fixed Button
+        
+        // Start Loading Page
+        div.box-convas
+            canvas
+        
+        // End Loading Page
+        
+        
+        
+        //Start Script
+        include include/script
+        //End Script

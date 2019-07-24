@@ -1,0 +1,55 @@
+// Start Variable
+
+$mainFont: 'Teko', sans-serif;
+
+$altFont: 'Titillium Web', sans-serif;
+
+$mainColor: #192a56;
+
+$altColor: '#f1c40f';
+
+// End Variable
+
+// Start Mixin
+
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefixer in $prefixes {
+        #{'-' + $prefixer + '-' + $property}: $value;
+    }
+    #{$property}: $value;
+}
+
+@mixin object($width, $height, $bg) {
+	width: $width;
+	height: $height;
+	background: $bg;
+}
+@mixin menu($name,$transY,$rotate){
+	animation :$name 0.4s ease-in-out forwards;
+	@keyframes #{$name}{
+		0%{ transform:none; }
+		25%{ transform:translateY($transY); }
+		100%{ transform:translateY($transY) rotate($rotate); }
+	}
+}
+
+// End Mixin
+
+/////////End Mixin 
+
+//Media Query Variable
+$maxMobile: '(max-width: 575.98px)';
+$minSmall: '(min-width: 576px)';
+$maxSmall: '(max-width: 767.98px)';
+$minMedium: '(min-width: 768px)';
+$maxMedium: '(max-width: 991.98px)';
+$minLarg: '(min-width: 992px)';
+$maxLarg: '(max-width: 1199.98px)';
+$minxLarg: '(min-width: 1200px)';
+
+
+/* Start Main rules */
+button{
+    outline: none!important;
+}
+/* End Main rules */
