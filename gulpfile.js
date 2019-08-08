@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     compress = require('gulp-imagemin'),
     zip = require('gulp-zip'),
-    notify = require('gulp-notify');
+    notify = require('gulp-notify'),
+    babel = require('gulp-babel');
 
 
 
@@ -35,6 +36,7 @@ gulp.task('css', function () {
 //Js Tasks
 gulp.task('js', function () {
     return gulp.src('project/js/*.js')
+        .pipe(babel())
         .pipe(gulp.dest('dist/js'))
     
 });

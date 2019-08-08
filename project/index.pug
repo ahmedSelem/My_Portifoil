@@ -13,7 +13,7 @@ html
         //![endif]
     body
                         
-        //- Start Navbar
+        //- Start Navbar 
         section(class='nav d-block d-md-none')
             nav
                 ul.nav-list
@@ -31,11 +31,13 @@ html
                     li(class='text-capitalize' data-links='portifoil')
                         p.portifoil portifoil
                         i(class='fa fa-briefcase')
+                    li(class='text-capitalize' data-links='services')
+                        p.contact services
+                        i(class='fa fa-handshake')
                     li(class='text-capitalize' data-links='contact')
                         p.contact Contact
                         i(class='fa fa-envelope-open')
-
-        //- End Navbar
+        //- End Navbar 
 			
         
         //- Start Aside mixin
@@ -49,17 +51,19 @@ html
                 a(href=href data-links=dataLinks target='_blank') #[i(class=ClassIcon)]
                     p #[i(class=ClassIcon)]
                     
-        //Start ASide
+        //Start ASide 
         aside(class='d-none d-md-block')
             ul(class='list-unstyled')
                 +shapeslinks('welcome to personal information', 'fa fa-user-tie', '#', 'home')
                 +shapeslinks('now more about me', 'fa fa-receipt', '#', 'about')
                 +shapeslinks('now it\'s my some projects', 'fa fa-briefcase', '#', 'portifoil')
+                +shapeslinks('what services i offer you? ', 'fa fa-handshake', '#', 'services')
                 +shapeslinks('contact me and download cv', 'fa fa-mobile-alt', '#', 'contact')
 
-        //End ASide
+        //End ASide  
         
-        //-Start Header Mixin
+        
+        //-Start Header Mixin 
         mixin shapessocial(textSpan, ClassIcon, href)
             li
                 |
@@ -70,7 +74,7 @@ html
                 a(href=href target='_blank') #[i(class=ClassIcon)]
                     p #[i(class=ClassIcon)]
                     
-        //Start Section Header
+        // Start Section Header 
         header(id='home')
 
             //Start Convas
@@ -89,10 +93,11 @@ html
                             +shapessocial ('twitter', 'fab fa-twitter', 'https://twitter.com/Selem13665165')
                             +shapessocial ('linkedIn', 'fab fa-linkedin-in', 'https://www.linkedin.com/in/ahmed-selem-a8a49116a')
                             +shapessocial ('instagram', 'fab fa-instagram', 'https://www.instagram.com/ahmed_abdelrahman1000')
-
-
-        //End Section Header
+        // End Section Header 
         
+        
+        
+        //- Start About Mixin
         mixin bar(skillName, Width, text)
             div(class='col-12 col-md-6')
                 div(class='skill-items')
@@ -100,7 +105,7 @@ html
                     div(class='skill-bar wow slideInLeft' style=Width data-wow-duration='4s' data-wow-offset='100')
                         span=text
         
-        // Start Section About   
+        // Start Section About 
         section(class='about' id='about')
             div.container
                 div(class='box-h')
@@ -122,9 +127,15 @@ html
                             +bar('pugJs', 'width: 80%', '80%')
                             +bar('gulpJs', 'width: 80%', '80%')
                             +bar('jquery', 'width: 80%', '80%')
+                            +bar('github & git', 'width: 70%', '70%')
         
-        // End Section About
-        mixin popProject(src, title, href, nameOfProject)
+        // End Section About 
+        
+        
+        
+        
+        //- Start LAtest Work Mixin 
+        mixin popProject(src, href1, href2, nameOfProject)
             div(class='col-12 col-md-6 col-lg-4')
                 div(class='work-items')
                     div(class='box-img')
@@ -132,12 +143,11 @@ html
                     div(class='details-project')
                         div(class='pos-box')
                             div(class='btn-box')
-                                button #[a(href=href class='text-capitalize') show project #[i(class='fa fa-desktop')] ]
-                                button #[a(href=href class='text-capitalize')  show code #[i(class='fab fa-github')] ]
+                                button #[a(href=href1 class='text-capitalize') show project #[i(class='fa fa-desktop')] ]
+                                button #[a(href=href2 class='text-capitalize')  show code #[i(class='fab fa-github')] ]
                             h4=nameOfProject
                     
-        
-        // Start Latest Work  
+        // Start Section Latest Work 
         section(class='latest-work' id='portifoil')
             div.container
                 div(class='box-h')
@@ -146,13 +156,40 @@ html
                     span.text-capitalize portfolio
                     p(class='text-capitalize') chek out my works
                 div.row
-                    +popProject('images/projects/img01.png', '', 'https://kirshnacompany.netlify.com', 'krishna kumar')
-                    +popProject('images/projects/img02.png', '', 'https://creativeportfolie.netlify.com', 'creative project') 
-                    +popProject('images/projects/img03.png', '', 'https://programmingcompany.netlify.com', 'roqay company')     
+                    +popProject('images/projects/img01.png', 'https://ahmedselem.github.io/KRISHNA_KUMAR', 'https://github.com/ahmedSelem/KRISHNA-KUMAR', 'krishna kumar')
+                    
+                    +popProject('images/projects/img02.png', 'https://ahmedselem.github.io/Creative_portfolio', 'https://github.com/ahmedSelem/Creative-portfolio', 'creative project') 
+                    
+                    +popProject('images/projects/img03.png', 'https://ahmedselem.github.io/Roqay_Company', 'https://github.com/ahmedSelem/Roqay_Company', 'roqay company')     
         
-        // End Latest Work
+        // End Section Latest Work 
         
-        // Start Contact Me   
+        // Start Services Mixin
+        mixin servicesBox(classicon,nameService, abouService)
+            div(class='col-12 col-md-6 col-lg-4')
+                div(class='services-box text-center')
+                    div.box
+                        span #[i(class=classicon)]
+                        div(class='info-box')
+                            h4=nameService
+                            p=abouService
+
+     
+        // Start Section Services
+        section(class='services' id='services')
+            div(class='container')
+                div(class='box-h')
+                        h2(class='text-uppercase') services..
+                div(class='box-info text-center')
+                    p(class='text-capitalize') what service i offer for you ?
+                div.row
+                    +servicesBox('fa fa-newspaper', 'web design', 'design a responsive web site for you with html5, css3, bootstrap, javascript')
+                    +servicesBox('fa fa-eraser', 'clean code', 'Write clean and documented code to make anyone has the ability to understand the code')
+                    +servicesBox('fa fa-signal', 'make your website runs faster', 'increase your website speed and makes it loads faster')
+                    
+        // End Section Services 
+        
+        // Start Section Contact Me  
         section(class='contact-me' id='contact')
             div.container
                 div(class='box-h')
@@ -180,29 +217,27 @@ html
                         div.row
                             div(class='col-12 col-md-6')
                                 div(class='btn-box')
-                                    button  #[a(href='https://drive.wps.com/d/ACLfDWGxirYe4Krn442dFA') download cv]
+                                    button  #[a(href='https://drive.wps.com/d/ABqFSs2xirYegPqt146dFA') download cv]
                             div(class='col-12 col-md-6')
                                 ul(class='list-unstyled d-flex justify-content-center')
                                     li #[a(href='http://facebook.com/selem110') #[i(class='fab fa-facebook')]]
                                     li #[a(href='https://twitter.com/Selem13665165') #[i(class='fab fa-twitter')]]
                                     li #[a(href='https://www.linkedin.com/in/ahmed-selem-a8a49116a') #[i(class='fab fa-linkedin-in')]]
                                     li #[a(href='https://www.instagram.com/ahmed_abdelrahman1000') #[i(class='fab fa-instagram')]]
-
+                                    li #[a(href='https://github.com/ahmedSelem') #[i(class='fab fa-github')]] 
+        // End Contact Me 
         
-        // End Contact Me
         
-        // STart Fixed Button
-        
+        // STart Fixed Button 
         div(class='fixed-button d-md-none')
             span #[i(class='fa fa-arrow-up')]
+        // End Fixed Button 
         
-        // End Fixed Button
-        
-        // Start Loading Page
+        // Start Loading Page 
         div.box-convas
             canvas
         
-        // End Loading Page
+        // End Loading Page 
         
         
         

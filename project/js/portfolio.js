@@ -7,11 +7,17 @@
     
     $('.menuButton').on('click', function () {
         $(this).toggleClass('active-icon');
-
+        
         if ($(this).hasClass('active-icon')) {
-            $('.nav-list').css('height', '250px');
+            $('.nav-list').css({
+                height: '305px', 
+                overflow: 'visible'
+            });
         } else {
-            $('.nav-list').css('height', '50px');
+            $('.nav-list').css({
+                height: '50px', 
+                overflow: 'hidden'
+            });
         }
 
         $('.nav nav ul li i').toggleClass('icon');
@@ -116,7 +122,6 @@
     $('body').niceScroll({
         cursorborder: 0,
         cursorcolor:  '#192a56',
-        scrollspeed: 100,
         zindex: 55555
     });
     
